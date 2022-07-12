@@ -1,8 +1,13 @@
 package ch.zli.m223.ksh19a.mj.CRM.init;
 
-import ch.zli.m223.ksh19a.mj.CRM.model.AppUser;
-import ch.zli.m223.ksh19a.mj.CRM.repository.RoleRepository;
-import ch.zli.m223.ksh19a.mj.CRM.repository.UserRepository;
+import ch.zli.m223.ksh19a.mj.CRM.model.Klasse;
+import ch.zli.m223.ksh19a.mj.CRM.model.Klassenlehrperson;
+import ch.zli.m223.ksh19a.mj.CRM.model.Schueler;
+import ch.zli.m223.ksh19a.mj.CRM.model.Schuelhaus;
+import ch.zli.m223.ksh19a.mj.CRM.repository.KlassenlehrpersonRepository;
+import ch.zli.m223.ksh19a.mj.CRM.repository.SchuelerRepository;
+import ch.zli.m223.ksh19a.mj.CRM.repository.KlassenRepository;
+import ch.zli.m223.ksh19a.mj.CRM.repository.SchulhausRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -14,18 +19,30 @@ import javax.transaction.Transactional;
 public class ServerInitializer implements ApplicationRunner {
 
     @Autowired
-    private UserRepository userRepository;
+    private KlassenRepository klassenRepository;
     @Autowired
-    private RoleRepository roleRepository;
+    private SchuelerRepository schuelerRepository;
+
+    @Autowired
+    private SchulhausRepository schulhausRepository;
+
+    @Autowired
+    private KlassenlehrpersonRepository klassenlehrpersonRepository;
 
     @Override
     @Transactional
     public void run(ApplicationArguments args) throws Exception {
-        AppUser hans = userRepository.insert("Hans");
-        roleRepository.insert("Admin", hans);
-        roleRepository.insert("User", hans);
+        Schuelhaus schulhaus = schulhausRepository.insert("KSH");
 
-        AppUser peter = userRepository.insert("Peter");
-        roleRepository.insert("User", peter);
+        Klasse klasse = klassenRepository.insert("I3a",schulhaus);
+
+        Klassenlehrperson klassenlehrperson = klassenlehrpersonRepository.insert("Hans","Peter",35,klasse);
+
+        schuelerRepository.insert("Martin", "Düppi",klasse);
+        schuelerRepository.insert("Arbias", "Imeri",klasse);
+        schuelerRepository.insert("Luigi", "Spina",klasse);
+        schuelerRepository.insert("Malo", "Jaboulet",klasse);
+        schuelerRepository.insert("Yannis", "Lee",klasse);
+
     }
 }

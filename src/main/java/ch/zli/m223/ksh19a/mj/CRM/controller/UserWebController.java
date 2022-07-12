@@ -1,7 +1,7 @@
 package ch.zli.m223.ksh19a.mj.CRM.controller;
 
-import ch.zli.m223.ksh19a.mj.CRM.model.AppUser;
-import ch.zli.m223.ksh19a.mj.CRM.service.UserService;
+import ch.zli.m223.ksh19a.mj.CRM.model.Klasse;
+import ch.zli.m223.ksh19a.mj.CRM.service.KlassenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,14 +13,14 @@ import java.util.List;
 public class UserWebController {
 
     @Autowired
-    private UserService userService;
+    private KlassenService klassenService;
 
-    @GetMapping("/userlist")
+    /*@GetMapping("/userlist")
     String getUserList(Model model) {
-        List<AppUser> userList = userService.getAllUsers();
+        List<Klasse> userList = klassenService.getAllUsers();
         model.addAttribute("users", userList);
 
         return "userList";
-    }
+    }*/
 
 }

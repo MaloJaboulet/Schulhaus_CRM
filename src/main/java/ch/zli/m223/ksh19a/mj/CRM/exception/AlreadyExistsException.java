@@ -3,13 +3,13 @@ package ch.zli.m223.ksh19a.mj.CRM.exception;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-@ResponseStatus(code = HttpStatus.NOT_FOUND)
-public class UserNotFoundException extends RuntimeException {
-    public UserNotFoundException() {
+@ResponseStatus(code = HttpStatus.CONFLICT)
+public class AlreadyExistsException extends RuntimeException {
+    public AlreadyExistsException() {
         this("");
     }
 
-    public UserNotFoundException(String message) {
+    public AlreadyExistsException(String message) {
         super(message, null, false, false);
     }
 }

@@ -1,11 +1,11 @@
 package ch.zli.m223.ksh19a.mj.CRM.controller;
 
-import ch.zli.m223.ksh19a.mj.CRM.model.Role;
+import ch.zli.m223.ksh19a.mj.CRM.model.Schueler;
 
 public class RoleDTO {
     public String roleName;
 
-    public RoleDTO(Role role) {
-        this.roleName = role.getRole();
-    }
+    /*public RoleDTO(Schueler schueler) {
+        this.roleName = schueler.getRole();
+    }*/
 }
