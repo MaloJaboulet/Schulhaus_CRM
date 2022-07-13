@@ -13,5 +13,7 @@ public interface Klasse {
 
     public Integer getAnzahlSchueler();
 
-    void addSchuelerZurKlasse(SchuelerImpl schueler);
+    void addSchuelerZurKlasse(String vorname, String nachname);
+
+    public String getSchulhausname();
 }

@@ -5,6 +5,7 @@ import ch.zli.m223.ksh19a.mj.CRM.exception.AlreadyExistsException;
 import ch.zli.m223.ksh19a.mj.CRM.exception.NotFoundException;
 import ch.zli.m223.ksh19a.mj.CRM.model.Klasse;
 import ch.zli.m223.ksh19a.mj.CRM.model.Schueler;
+import ch.zli.m223.ksh19a.mj.CRM.model.Schuelhaus;
 import ch.zli.m223.ksh19a.mj.CRM.repository.KlassenRepository;
 import ch.zli.m223.ksh19a.mj.CRM.repository.SchuelerRepository;
 import ch.zli.m223.ksh19a.mj.CRM.repository.SchulhausRepository;
@@ -22,6 +23,9 @@ public class SchuelerServiceImpl implements SchuelerService {
     @Autowired
     private SchuelerRepository schuelerRepository;
 
+    @Autowired
+    private KlassenRepository klassenRepository;
+
     @Override
     public List<Schueler> getAllSchueler() {
         return new ArrayList<>(schuelerRepository.findAll());
@@ -35,13 +39,17 @@ public class SchuelerServiceImpl implements SchuelerService {
     }
 
     @Override
-    public Schueler insertSchueler(String vorname, String nachname, Date startSchulzeit, Date endeSchulzeit, Klasse klasse) {
-        if (vorname == null || nachname == null || startSchulzeit == null || endeSchulzeit == null || klasse == null) {
+    public Schueler insertSchueler(String vorname, String nachname, String klassenName) {
+        if (vorname == null || nachname == null || klassenName == null) {
             throw new InvalidArgumentException("Ein Parameter war null");
         }
         if (schuelerRepository.findSchuelerByVornameAndNachname(vorname, nachname).isPresent()) {
             throw new AlreadyExistsException("Der Schüler mit diesem Namen gibt es schon.");
         }
+        if(!klassenRepository.findKlasseByName(klassenName).isPresent()){
+            throw new NotFoundException("Die Klasse wurde nicht gefunden.");
+        }
+        Klasse klasse = klassenRepository.findKlasseByName(klassenName).get();
 
         return schuelerRepository.insert(vorname, nachname, klasse);
     }

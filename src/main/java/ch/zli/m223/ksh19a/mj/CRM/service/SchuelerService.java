@@ -13,7 +13,7 @@ public interface SchuelerService {
 
     Schueler getSchueler(Long id);
 
-    Schueler insertSchueler(String vorname, String nachname, Date startSchulzeit, Date endeSchulzeit, Klasse klasse);
+    Schueler insertSchueler(String vorname, String nachname, String klasse);
 
     Long deleteSchueler(String vorname,String nachname);
 }

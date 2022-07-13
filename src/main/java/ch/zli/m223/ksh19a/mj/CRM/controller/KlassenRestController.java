@@ -3,6 +3,10 @@ package ch.zli.m223.ksh19a.mj.CRM.controller;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import ch.zli.m223.ksh19a.mj.CRM.controller.DTO.KlasseDTO;
+import ch.zli.m223.ksh19a.mj.CRM.controller.DTO.KlassenInputDTO;
+import ch.zli.m223.ksh19a.mj.CRM.controller.DTO.SchuelerDTO;
+import ch.zli.m223.ksh19a.mj.CRM.controller.DTO.SchuelerInputDTO;
 import ch.zli.m223.ksh19a.mj.CRM.model.Klasse;
 import ch.zli.m223.ksh19a.mj.CRM.service.KlassenService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,29 +26,34 @@ public class KlassenRestController {
                 .collect(Collectors.toList());
     }
 
-   /* @GetMapping("/users/{id}")
-    public UserDTO getUser(@PathVariable("id") Long id) {
-        return new UserDTO(klassenService.getUser(id));
+    @GetMapping("/klassen/{id}")
+    public KlasseDTO getKlasse(@PathVariable("id") Long id) {
+        return new KlasseDTO(klassenService.getKlasse(id));
     }
 
-    @PostMapping("/users")
-    public UserDTO insertUser(@RequestBody UserInputDTO userData) {
-        return new UserDTO(klassenService.insertUser(userData.name));
+    @PostMapping("/klassen")
+    public KlasseDTO insertKlasse(@RequestBody KlassenInputDTO klassenData) {
+        return new KlasseDTO(klassenService.insertKlasse(klassenData.name, klassenData.schulhaus));
     }
 
-    @DeleteMapping("/users/{name}")
-    public Long deleteUser(@PathVariable("name") String name) {
-        return klassenService.deleteUser(name);
+   @DeleteMapping("/klassen/{name}")
+    public Long deleteKlasse(@PathVariable("name") String name) {
+        return klassenService.deleteKlasse(name);
     }
 
 
-    @GetMapping("/users/{id}/roles")
-    public List<RoleDTO> getRolesFromUser(@PathVariable("id") Long id) {
-        Klasse klasse = klassenService.getUser(id);
-        return klasse.getRoles().stream()
-                .map(role -> new RoleDTO(role))
+   @GetMapping("/klassen/{id}/schueler")
+    public List<SchuelerDTO> getSchuelerFromKlasse(@PathVariable("id") Long id) {
+        Klasse klasse = klassenService.getKlasse(id);
+        return klasse.getSchueler().stream()
+                .map(schueler -> new SchuelerDTO(schueler))
                 .collect(Collectors.toList());
     }
-*/
 
+    @PostMapping("/klassen/{id}")
+    public KlasseDTO insertSchueler(@PathVariable("id") Long id, @RequestBody SchuelerInputDTO schuelerData){
+        Klasse klasse = klassenService.getKlasse(id);
+        klasse.addSchuelerZurKlasse(schuelerData.vorname,schuelerData.nachname);
+        return new KlasseDTO(klasse);
+    }
 }

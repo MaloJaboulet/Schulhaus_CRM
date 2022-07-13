@@ -8,6 +8,7 @@ import ch.zli.m223.ksh19a.mj.CRM.model.Klassenlehrperson;
 import ch.zli.m223.ksh19a.mj.CRM.model.Schueler;
 import ch.zli.m223.ksh19a.mj.CRM.model.Schuelhaus;
 import ch.zli.m223.ksh19a.mj.CRM.repository.KlassenRepository;
+import ch.zli.m223.ksh19a.mj.CRM.repository.SchulhausRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,8 @@ public class KlassenServiceImpl implements KlassenService {
 
     @Autowired
     private KlassenRepository klassenRepository;
+    @Autowired
+    private SchulhausRepository schulhausRepository;
 
     @Override
     public List<Klasse> getAllKlassen() {
@@ -34,13 +37,19 @@ public class KlassenServiceImpl implements KlassenService {
     }
 
     @Override
-    public Klasse insertKlasse(String name, Schuelhaus schulhaus) {
-        if (name == null || schulhaus == null) {
+    public Klasse insertKlasse(String name, String schulhausName) {
+        if (name == null || schulhausName == null) {
             throw new InvalidArgumentException("Ein Parameter war null.");
         }
         if (klassenRepository.findKlasseByName(name).isPresent()) {
             throw new AlreadyExistsException("Eine Klasse mit diesem Namen gibt es schon.");
         }
+
+
+        if(!schulhausRepository.findSchulhausByName(schulhausName).isPresent()){
+            throw new NotFoundException("Das Schulhaus wurde nicht gefunden.");
+        }
+        Schuelhaus schulhaus = schulhausRepository.findSchulhausByName(schulhausName).get();
 
         return klassenRepository.insert(name, schulhaus);
     }

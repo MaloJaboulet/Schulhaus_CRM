@@ -9,7 +9,7 @@ public interface KlassenService {
 
     Klasse getKlasse(Long id);
 
-    Klasse insertKlasse(String name, Schuelhaus schulhaus);
+    Klasse insertKlasse(String name, String schulhaus);
 
     Long deleteKlasse(String name);
 

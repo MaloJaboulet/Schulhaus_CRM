@@ -19,7 +19,7 @@ public interface SchuelerRepository extends JpaRepository<SchuelerImpl, Long> {
         //Save Role to DB
         SchuelerImpl schuelerImpl = save(schueler);
         // Update users role list
-        klassImpl.addSchuelerZurKlasse(schuelerImpl);
+        klassImpl.addSchuelerZurKlasse(vorname, nachname);
 
         return schuelerImpl;
     }

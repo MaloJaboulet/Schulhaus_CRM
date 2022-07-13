@@ -61,8 +61,14 @@ public class KlasseImpl implements Klasse {
     }
 
     @Override
-    public void addSchuelerZurKlasse(SchuelerImpl schueler) {
+    public void addSchuelerZurKlasse(String vorname, String nachname) {
+        SchuelerImpl schueler = new SchuelerImpl(vorname, nachname,this);
         schuelers.add(schueler);
+    }
+
+    @Override
+    public String getSchulhausname() {
+        return schulhaus.getName();
     }
 
     public void setId(Long id) {
