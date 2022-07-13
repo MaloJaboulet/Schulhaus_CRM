@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface SchulhausRepository extends JpaRepository<SchulhausImpl, Long> {
 
-    default Schuelhaus insert(String name) {
+    default Schulhaus insert(String name) {
         SchulhausImpl schuelhaus = new SchulhausImpl(name);
         return save(schuelhaus);
     }

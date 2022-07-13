@@ -2,7 +2,7 @@ package ch.zli.m223.ksh19a.mj.CRM.model;
 
 import java.util.List;
 
-public interface Schuelhaus {
+public interface Schulhaus {
 
     public Long getID();
 

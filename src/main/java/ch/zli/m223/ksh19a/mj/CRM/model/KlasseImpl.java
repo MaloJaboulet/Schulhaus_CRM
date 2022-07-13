@@ -61,6 +61,11 @@ public class KlasseImpl implements Klasse {
     }
 
     @Override
+    public void setKlassenlehrperson(Klassenlehrperson klassenlehrperson) {
+        this.klassenlehrperson = (KlassenlehrpersonImpl) klassenlehrperson;
+    }
+
+    @Override
     public void addSchuelerZurKlasse(String vorname, String nachname) {
         SchuelerImpl schueler = new SchuelerImpl(vorname, nachname,this);
         schuelers.add(schueler);
@@ -102,4 +107,6 @@ public class KlasseImpl implements Klasse {
     public void setSchulhaus(SchulhausImpl schulhaus) {
         this.schulhaus = schulhaus;
     }
+
+
 }

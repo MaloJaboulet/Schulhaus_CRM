@@ -5,16 +5,13 @@ import ch.zli.m223.ksh19a.mj.CRM.exception.AlreadyExistsException;
 import ch.zli.m223.ksh19a.mj.CRM.exception.NotFoundException;
 import ch.zli.m223.ksh19a.mj.CRM.model.Klasse;
 import ch.zli.m223.ksh19a.mj.CRM.model.Schueler;
-import ch.zli.m223.ksh19a.mj.CRM.model.Schuelhaus;
 import ch.zli.m223.ksh19a.mj.CRM.repository.KlassenRepository;
 import ch.zli.m223.ksh19a.mj.CRM.repository.SchuelerRepository;
-import ch.zli.m223.ksh19a.mj.CRM.repository.SchulhausRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Service

@@ -2,8 +2,7 @@ package ch.zli.m223.ksh19a.mj.CRM.init;
 
 import ch.zli.m223.ksh19a.mj.CRM.model.Klasse;
 import ch.zli.m223.ksh19a.mj.CRM.model.Klassenlehrperson;
-import ch.zli.m223.ksh19a.mj.CRM.model.Schueler;
-import ch.zli.m223.ksh19a.mj.CRM.model.Schuelhaus;
+import ch.zli.m223.ksh19a.mj.CRM.model.Schulhaus;
 import ch.zli.m223.ksh19a.mj.CRM.repository.KlassenlehrpersonRepository;
 import ch.zli.m223.ksh19a.mj.CRM.repository.SchuelerRepository;
 import ch.zli.m223.ksh19a.mj.CRM.repository.KlassenRepository;
@@ -32,11 +31,13 @@ public class ServerInitializer implements ApplicationRunner {
     @Override
     @Transactional
     public void run(ApplicationArguments args) throws Exception {
-        Schuelhaus schulhaus = schulhausRepository.insert("KSH");
+        Schulhaus schulhaus = schulhausRepository.insert("KSH");
 
         Klasse klasse = klassenRepository.insert("I3a",schulhaus);
 
         Klassenlehrperson klassenlehrperson = klassenlehrpersonRepository.insert("Hans","Peter",35,klasse);
+
+        klasse.setKlassenlehrperson(klassenlehrperson);
 
         schuelerRepository.insert("Martin", "Düppi",klasse);
         schuelerRepository.insert("Arbias", "Imeri",klasse);

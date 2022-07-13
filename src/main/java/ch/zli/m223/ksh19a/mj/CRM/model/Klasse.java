@@ -13,6 +13,8 @@ public interface Klasse {
 
     public Integer getAnzahlSchueler();
 
+    public void setKlassenlehrperson(Klassenlehrperson klassenlehrperson);
+
     void addSchuelerZurKlasse(String vorname, String nachname);
 
     public String getSchulhausname();

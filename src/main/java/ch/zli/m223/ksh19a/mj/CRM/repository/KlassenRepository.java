@@ -8,8 +8,8 @@ import java.util.Optional;
 public interface KlassenRepository extends JpaRepository<KlasseImpl, Long> {
 
 
-    default Klasse insert(String klassenName, Schuelhaus schuelhaus) {
-        SchulhausImpl schulhausImpl = (SchulhausImpl) schuelhaus;
+    default Klasse insert(String klassenName, Schulhaus schulhaus) {
+        SchulhausImpl schulhausImpl = (SchulhausImpl) schulhaus;
 
         KlasseImpl klasse = new KlasseImpl(klassenName,schulhausImpl);
         return save(klasse);

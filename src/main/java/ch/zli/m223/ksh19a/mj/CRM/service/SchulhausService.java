@@ -1,17 +1,15 @@
 package ch.zli.m223.ksh19a.mj.CRM.service;
 
-import ch.zli.m223.ksh19a.mj.CRM.model.Klasse;
-import ch.zli.m223.ksh19a.mj.CRM.model.Schuelhaus;
-
-import java.util.Date;
-import java.util.List;
+import ch.zli.m223.ksh19a.mj.CRM.model.Schulhaus;
 
 public interface SchulhausService {
 
 
-    Schuelhaus getSchulhaus(Long id);
+    Schulhaus getSchulhaus(Long id);
 
-    Schuelhaus insertSchulhaus(String name);
+    Schulhaus insertSchulhaus(String name);
 
     Long deleteSchulhaus(String name);
+
+
 }

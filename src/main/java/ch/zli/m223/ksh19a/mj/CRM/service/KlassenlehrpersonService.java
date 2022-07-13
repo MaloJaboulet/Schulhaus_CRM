@@ -8,7 +8,7 @@ public interface KlassenlehrpersonService {
 
     Klassenlehrperson getKlassenlehrperson(Long id);
 
-    Klassenlehrperson insertKlassenlehrperson(String vorname, String nachname, Integer alter, Klasse klasse);
+    Klassenlehrperson insertKlassenlehrperson(String vorname, String nachname, Integer alter, String klasse);
 
     Long deleteKlassenlehrperson(String vorname, String nachname);
 }

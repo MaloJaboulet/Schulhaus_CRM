@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "Schulhaus")
-public class SchulhausImpl implements Schuelhaus{
+public class SchulhausImpl implements Schulhaus {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

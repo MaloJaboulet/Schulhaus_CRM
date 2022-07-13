@@ -1,10 +1,7 @@
 package ch.zli.m223.ksh19a.mj.CRM.controller;
 
-import ch.zli.m223.ksh19a.mj.CRM.controller.DTO.KlasseDTO;
-import ch.zli.m223.ksh19a.mj.CRM.controller.DTO.KlassenInputDTO;
 import ch.zli.m223.ksh19a.mj.CRM.controller.DTO.SchuelerDTO;
-import ch.zli.m223.ksh19a.mj.CRM.controller.DTO.SchuelerInputDTO;
-import ch.zli.m223.ksh19a.mj.CRM.model.Klasse;
+import ch.zli.m223.ksh19a.mj.CRM.controller.DTO.Input.SchuelerInputDTO;
 import ch.zli.m223.ksh19a.mj.CRM.service.SchuelerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -37,7 +34,7 @@ public class SchuelerRestController {
     }
 
     @DeleteMapping("/schueler/{vorname}/{nachname}")
-    public Long deleteSchueler(@PathVariable("vorname") String vorname,@PathVariable("nachname") String nachname) {
-        return schuelerService.deleteSchueler(vorname,nachname);
+    public Long deleteSchueler(@PathVariable("vorname") String vorname, @PathVariable("nachname") String nachname) {
+        return schuelerService.deleteSchueler(vorname, nachname);
     }
 }

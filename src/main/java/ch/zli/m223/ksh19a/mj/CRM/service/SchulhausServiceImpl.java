@@ -3,7 +3,7 @@ package ch.zli.m223.ksh19a.mj.CRM.service;
 import ch.zli.m223.ksh19a.mj.CRM.exception.InvalidArgumentException;
 import ch.zli.m223.ksh19a.mj.CRM.exception.NotFoundException;
 import ch.zli.m223.ksh19a.mj.CRM.exception.AlreadyExistsException;
-import ch.zli.m223.ksh19a.mj.CRM.model.Schuelhaus;
+import ch.zli.m223.ksh19a.mj.CRM.model.Schulhaus;
 import ch.zli.m223.ksh19a.mj.CRM.repository.SchulhausRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,14 +17,14 @@ public class SchulhausServiceImpl implements SchulhausService {
     private SchulhausRepository schulhausRepository;
 
     @Override
-    public Schuelhaus getSchulhaus(Long id) {
+    public Schulhaus getSchulhaus(Long id) {
         return schulhausRepository.findById(id).orElseThrow(() -> {
             throw new NotFoundException("Es git kein Schulhaus mit dieser ID.");
         });
     }
 
     @Override
-    public Schuelhaus insertSchulhaus(String name) {
+    public Schulhaus insertSchulhaus(String name) {
         if (name == null) {
             throw new InvalidArgumentException("Name darf nicht null sein.");
         }

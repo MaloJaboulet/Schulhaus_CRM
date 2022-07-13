@@ -4,9 +4,7 @@ import ch.zli.m223.ksh19a.mj.CRM.exception.InvalidArgumentException;
 import ch.zli.m223.ksh19a.mj.CRM.exception.AlreadyExistsException;
 import ch.zli.m223.ksh19a.mj.CRM.exception.NotFoundException;
 import ch.zli.m223.ksh19a.mj.CRM.model.Klasse;
-import ch.zli.m223.ksh19a.mj.CRM.model.Klassenlehrperson;
-import ch.zli.m223.ksh19a.mj.CRM.model.Schueler;
-import ch.zli.m223.ksh19a.mj.CRM.model.Schuelhaus;
+import ch.zli.m223.ksh19a.mj.CRM.model.Schulhaus;
 import ch.zli.m223.ksh19a.mj.CRM.repository.KlassenRepository;
 import ch.zli.m223.ksh19a.mj.CRM.repository.SchulhausRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,7 +47,7 @@ public class KlassenServiceImpl implements KlassenService {
         if(!schulhausRepository.findSchulhausByName(schulhausName).isPresent()){
             throw new NotFoundException("Das Schulhaus wurde nicht gefunden.");
         }
-        Schuelhaus schulhaus = schulhausRepository.findSchulhausByName(schulhausName).get();
+        Schulhaus schulhaus = schulhausRepository.findSchulhausByName(schulhausName).get();
 
         return klassenRepository.insert(name, schulhaus);
     }
