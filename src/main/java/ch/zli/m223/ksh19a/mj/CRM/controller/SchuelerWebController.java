@@ -1,19 +1,15 @@
 package ch.zli.m223.ksh19a.mj.CRM.controller;
 
-import ch.zli.m223.ksh19a.mj.CRM.model.Klasse;
-import ch.zli.m223.ksh19a.mj.CRM.service.KlassenService;
+import ch.zli.m223.ksh19a.mj.CRM.service.SchuelerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.List;
-
 @Controller
-public class UserWebController {
+public class SchuelerWebController {
 
     @Autowired
-    private KlassenService klassenService;
+    private SchuelerService schuelerService;
 
     /*@GetMapping("/userlist")
     String getUserList(Model model) {
@@ -22,5 +18,21 @@ public class UserWebController {
 
         return "userList";
     }*/
+
+    @GetMapping("/admin")
+    String getToAdminPage() {
+        return "admin_page";
+    }
+
+    @GetMapping("/schueler")
+    String getToUserPage() {
+        return "schueler_page";
+    }
+
+
+    @GetMapping("/login")
+    String getToLoginPage() {
+        return "login_page";
+    }
 
 }

@@ -36,7 +36,7 @@ public class SchuelerServiceImpl implements SchuelerService {
     }
 
     @Override
-    public Schueler insertSchueler(String vorname, String nachname, String klassenName) {
+    public Schueler insertSchueler(String vorname, String nachname, String klassenName, String password) {
         if (vorname == null || nachname == null || klassenName == null) {
             throw new InvalidArgumentException("Ein Parameter war null");
         }
@@ -48,7 +48,7 @@ public class SchuelerServiceImpl implements SchuelerService {
         }
         Klasse klasse = klassenRepository.findKlasseByName(klassenName).get();
 
-        return schuelerRepository.insert(vorname, nachname, klasse);
+        return schuelerRepository.insert(vorname, nachname, klasse, password);
     }
 
     @Override
@@ -64,7 +64,7 @@ public class SchuelerServiceImpl implements SchuelerService {
     }
 
     @Override
-    public Schueler changeSchueler(Long id, String vorname, String nachname, String klassenName) {
+    public Schueler changeSchueler(Long id, String vorname, String nachname, String klassenName, String password) {
         if (id == null || vorname == null || nachname == null || klassenName == null) {
             throw new InvalidArgumentException("Ein Parameter war null");
         }
@@ -76,9 +76,9 @@ public class SchuelerServiceImpl implements SchuelerService {
         }
         Klasse klasse = klassenRepository.findKlasseByName(klassenName).get();
 
-        schuelerRepository.deleteByID(id);
+        schuelerRepository.deleteById(id);
 
-        return schuelerRepository.insert(vorname, nachname, klasse);
+        return schuelerRepository.insert(vorname, nachname, klasse, password);
     }
 
 

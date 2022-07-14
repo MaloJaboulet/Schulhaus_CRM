@@ -66,8 +66,8 @@ public class KlasseImpl implements Klasse {
     }
 
     @Override
-    public void addSchuelerZurKlasse(String vorname, String nachname) {
-        SchuelerImpl schueler = new SchuelerImpl(vorname, nachname,this);
+    public void addSchuelerZurKlasse(String vorname, String nachname, String password) {
+        SchuelerImpl schueler = new SchuelerImpl(vorname, nachname,this, password);
         schuelers.add(schueler);
     }
 

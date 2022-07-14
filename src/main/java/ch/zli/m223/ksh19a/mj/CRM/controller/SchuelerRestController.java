@@ -30,7 +30,7 @@ public class SchuelerRestController {
 
     @PostMapping("/schueler")
     public SchuelerDTO insertSchueler(@RequestBody SchuelerInputDTO schuelerData) {
-        return new SchuelerDTO(schuelerService.insertSchueler(schuelerData.vorname, schuelerData.nachname, schuelerData.klasse));
+        return new SchuelerDTO(schuelerService.insertSchueler(schuelerData.vorname, schuelerData.nachname, schuelerData.klasse, schuelerData.password));
     }
 
     @DeleteMapping("/schueler/{vorname}/{nachname}")
@@ -39,7 +39,7 @@ public class SchuelerRestController {
     }
 
     @PostMapping("/schueler/{id}/")
-    public SchuelerDTO changeSchueler(@RequestBody SchuelerInputDTO schuelerInputDTO){
-        return new SchuelerDTO(schuelerService.)
+    public SchuelerDTO changeSchueler(@PathVariable("id") Long id, @RequestBody SchuelerInputDTO schuelerInputDTO){
+        return new SchuelerDTO(schuelerService.changeSchueler(id, schuelerInputDTO.vorname, schuelerInputDTO.nachname, schuelerInputDTO.klasse, schuelerInputDTO.password));
     }
 }

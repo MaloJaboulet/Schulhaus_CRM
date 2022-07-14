@@ -53,7 +53,7 @@ public class KlassenRestController {
     @PostMapping("/klassen/{id}")
     public KlasseDTO insertSchueler(@PathVariable("id") Long id, @RequestBody SchuelerInputDTO schuelerData){
         Klasse klasse = klassenService.getKlasse(id);
-        klasse.addSchuelerZurKlasse(schuelerData.vorname,schuelerData.nachname);
+        klasse.addSchuelerZurKlasse(schuelerData.vorname,schuelerData.nachname, schuelerData.password);
         return new KlasseDTO(klasse);
     }
 }

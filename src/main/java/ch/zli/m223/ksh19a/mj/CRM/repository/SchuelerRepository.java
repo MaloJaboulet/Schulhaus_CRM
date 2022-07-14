@@ -12,14 +12,14 @@ import java.util.Optional;
 
 public interface SchuelerRepository extends JpaRepository<SchuelerImpl, Long> {
 
-    default Schueler insert(String vorname, String nachname, Klasse klasse) {
+    default Schueler insert(String vorname, String nachname, Klasse klasse, String password) {
         KlasseImpl klassImpl = (KlasseImpl) klasse;
         //Create new Role
-        SchuelerImpl schueler = new SchuelerImpl(vorname,nachname, klassImpl);
+        SchuelerImpl schueler = new SchuelerImpl(vorname,nachname, klassImpl, password);
         //Save Role to DB
         SchuelerImpl schuelerImpl = save(schueler);
         // Update users role list
-        klassImpl.addSchuelerZurKlasse(vorname, nachname);
+        klassImpl.addSchuelerZurKlasse(vorname, nachname, password);
 
         return schuelerImpl;
     }
@@ -28,5 +28,7 @@ public interface SchuelerRepository extends JpaRepository<SchuelerImpl, Long> {
 
     Long deleteByVornameAndNachname(String vorname, String nachname);
 
-    Long deleteByID(Long id);
+
+
+    Optional<SchuelerImpl> findSchuelerByEmail(String email);
 }

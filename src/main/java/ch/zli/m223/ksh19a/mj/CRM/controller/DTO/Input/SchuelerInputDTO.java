@@ -4,4 +4,5 @@ public class SchuelerInputDTO {
     public String vorname;
     public String nachname;
     public String klasse;
+    public String password;
 }

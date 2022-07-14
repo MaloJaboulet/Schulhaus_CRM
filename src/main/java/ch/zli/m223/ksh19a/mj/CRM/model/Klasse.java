@@ -15,7 +15,7 @@ public interface Klasse {
 
     public void setKlassenlehrperson(Klassenlehrperson klassenlehrperson);
 
-    void addSchuelerZurKlasse(String vorname, String nachname);
+    void addSchuelerZurKlasse(String vorname, String nachname, String password);
 
     public String getSchulhausname();
 }

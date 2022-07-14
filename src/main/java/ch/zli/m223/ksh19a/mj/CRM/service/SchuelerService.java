@@ -13,9 +13,9 @@ public interface SchuelerService {
 
     Schueler getSchueler(Long id);
 
-    Schueler insertSchueler(String vorname, String nachname, String klasse);
+    Schueler insertSchueler(String vorname, String nachname, String klasse, String password);
 
     Long deleteSchueler(String vorname,String nachname);
 
-    Schueler changeSchueler(Long id, String vorname, String nachname, String klasse);
+    Schueler changeSchueler(Long id, String vorname, String nachname, String klasse, String password);
 }

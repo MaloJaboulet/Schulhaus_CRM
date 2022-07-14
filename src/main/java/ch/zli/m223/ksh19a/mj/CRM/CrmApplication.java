@@ -2,6 +2,8 @@ package ch.zli.m223.ksh19a.mj.CRM;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @SpringBootApplication
 public class CrmApplication {
@@ -10,4 +12,8 @@ public class CrmApplication {
 		SpringApplication.run(CrmApplication.class, args);
 	}
 
+	@Bean
+	BCryptPasswordEncoder bCryptPasswordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
 }
