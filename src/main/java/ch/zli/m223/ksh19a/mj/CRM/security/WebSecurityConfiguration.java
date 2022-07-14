@@ -31,10 +31,18 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         configureWeb(http);
-        //configureRest(http);
+        configureRest(http);
     }
 
-    private void configureRest(HttpSecurity http) {
+    private void configureRest(HttpSecurity http) throws Exception {
+        http.authorizeHttpRequests()
+                .antMatchers("/").permitAll()
+                .antMatchers("/api/v1/**").hasAnyAuthority(AppRoles.SCHUELER, AppRoles.ADMIN, AppRoles.KLASSENLEHRER)
+
+                .and()
+                .formLogin().permitAll()
+                .and()
+                .logout().permitAll();
     }
 
     private void configureWeb(HttpSecurity http) throws Exception {
