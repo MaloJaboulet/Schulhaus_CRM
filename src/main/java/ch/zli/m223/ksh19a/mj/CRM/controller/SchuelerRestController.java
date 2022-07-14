@@ -4,6 +4,7 @@ import ch.zli.m223.ksh19a.mj.CRM.controller.DTO.SchuelerDTO;
 import ch.zli.m223.ksh19a.mj.CRM.controller.DTO.Input.SchuelerInputDTO;
 import ch.zli.m223.ksh19a.mj.CRM.service.SchuelerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,7 +30,7 @@ public class SchuelerRestController {
     }
 
     @PostMapping("/schueler")
-    public SchuelerDTO insertSchueler(@RequestBody SchuelerInputDTO schuelerData) {
+    public SchuelerDTO insertSchueler(@RequestBody  SchuelerInputDTO schuelerData) {
         return new SchuelerDTO(schuelerService.insertSchueler(schuelerData.vorname, schuelerData.nachname, schuelerData.klasse, schuelerData.password));
     }
 

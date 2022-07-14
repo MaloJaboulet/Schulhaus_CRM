@@ -38,7 +38,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeHttpRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/api/v1/**").hasAnyAuthority(AppRoles.SCHUELER, AppRoles.ADMIN, AppRoles.KLASSENLEHRER)
-
                 .and()
                 .formLogin().permitAll()
                 .and()
@@ -51,6 +50,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin/**").hasAuthority(AppRoles.ADMIN)
                 .antMatchers("/schueler/**").hasAnyAuthority(AppRoles.SCHUELER, AppRoles.ADMIN, AppRoles.KLASSENLEHRER)
                 .antMatchers("/klassenlehrer/**").hasAnyAuthority(AppRoles.KLASSENLEHRER)
+                .antMatchers("/", "/js/**", "/css/**").permitAll()
                 .antMatchers("/login").authenticated()
                 .and()
                 .formLogin().permitAll()

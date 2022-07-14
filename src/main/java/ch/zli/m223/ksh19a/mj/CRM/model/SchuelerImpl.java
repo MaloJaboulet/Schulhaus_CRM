@@ -6,6 +6,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
@@ -73,6 +74,12 @@ public class SchuelerImpl implements Schueler {
         return startSchulzeit;
     }
 
+    @Override
+    public String getStartSchulzeitS() {
+        String pattern = "dd.MM.yyyy";
+        return new SimpleDateFormat(pattern).format(startSchulzeit);
+    }
+
     public void setStartSchulzeit(Date startSchulzeit) {
         this.startSchulzeit = startSchulzeit;
     }
@@ -81,6 +88,12 @@ public class SchuelerImpl implements Schueler {
     public Date getEndeSchulzeit() {
         return endeSchulzeit;
     }
+    @Override
+    public String getEndeSchulzeitS() {
+        String pattern = "dd.MM.yyyy";
+        return new SimpleDateFormat(pattern).format(endeSchulzeit);
+    }
+
 
     public void setEndeSchulzeit(Date endeSchulzeit) {
         this.endeSchulzeit = endeSchulzeit;

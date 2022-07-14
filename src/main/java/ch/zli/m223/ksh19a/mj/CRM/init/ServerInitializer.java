@@ -39,7 +39,7 @@ public class ServerInitializer implements ApplicationRunner {
 
         klasse.setKlassenlehrperson(klassenlehrperson);
 
-        schuelerRepository.insert("Aartin", "Düppi",klasse, "123");
+        schuelerRepository.insert("Martin", "Düppi",klasse, "123");
         schuelerRepository.insert("Arbias", "Imeri",klasse, "123");
         schuelerRepository.insert("Luigi", "Spina",klasse, "123");
         schuelerRepository.insert("Malo", "Jaboulet",klasse, "123");

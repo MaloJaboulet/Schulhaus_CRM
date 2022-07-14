@@ -12,4 +12,6 @@ public interface Schueler extends UserDetails {
     public String getNachname();
     public Date getStartSchulzeit();
     public Date getEndeSchulzeit();
+    public String getEndeSchulzeitS();
+    public String getStartSchulzeitS();
 }
