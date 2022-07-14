@@ -37,4 +37,9 @@ public class SchuelerRestController {
     public Long deleteSchueler(@PathVariable("vorname") String vorname, @PathVariable("nachname") String nachname) {
         return schuelerService.deleteSchueler(vorname, nachname);
     }
+
+    @PostMapping("/schueler/{id}/")
+    public SchuelerDTO changeSchueler(@RequestBody SchuelerInputDTO schuelerInputDTO){
+        return new SchuelerDTO(schuelerService.)
+    }
 }

@@ -27,4 +27,6 @@ public interface SchuelerRepository extends JpaRepository<SchuelerImpl, Long> {
     Optional<SchuelerImpl> findSchuelerByVornameAndNachname(String vorname, String nachname);
 
     Long deleteByVornameAndNachname(String vorname, String nachname);
+
+    Long deleteByID(Long id);
 }

@@ -63,5 +63,23 @@ public class SchuelerServiceImpl implements SchuelerService {
         return -1L;
     }
 
+    @Override
+    public Schueler changeSchueler(Long id, String vorname, String nachname, String klassenName) {
+        if (id == null || vorname == null || nachname == null || klassenName == null) {
+            throw new InvalidArgumentException("Ein Parameter war null");
+        }
+        if (schuelerRepository.findById(id).isPresent()) {
+            throw new AlreadyExistsException("Der Schüler mit dieser ID gibt es schon.");
+        }
+        if(!klassenRepository.findKlasseByName(klassenName).isPresent()){
+            throw new NotFoundException("Die Klasse wurde nicht gefunden.");
+        }
+        Klasse klasse = klassenRepository.findKlasseByName(klassenName).get();
+
+        schuelerRepository.deleteByID(id);
+
+        return schuelerRepository.insert(vorname, nachname, klasse);
+    }
+
 
 }
