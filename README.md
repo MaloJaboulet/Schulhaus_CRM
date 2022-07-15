@@ -18,7 +18,7 @@ Wenn auf die Applikation über das Web zugriffen wird, hat es ein GUI/ Webseite.
 Das Projekt klonen
 
 ```bash
-  git clone https://link-to-project
+  git clone https://github.com/MaloJaboulet/Schulhaus_CRM
 ```
 
 Das Projekt mit Eclipse oder mit Intellij öffnen
