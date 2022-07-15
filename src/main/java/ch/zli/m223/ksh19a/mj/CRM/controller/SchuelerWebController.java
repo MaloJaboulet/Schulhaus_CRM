@@ -1,6 +1,5 @@
 package ch.zli.m223.ksh19a.mj.CRM.controller;
 
-import ch.zli.m223.ksh19a.mj.CRM.controller.DTO.SchuelerDTO;
 import ch.zli.m223.ksh19a.mj.CRM.model.Klasse;
 import ch.zli.m223.ksh19a.mj.CRM.model.Schueler;
 import ch.zli.m223.ksh19a.mj.CRM.service.KlassenService;
